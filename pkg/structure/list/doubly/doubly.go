@@ -69,3 +69,20 @@ func (list *LinkedList) DeleteFirst() interface{} {
 	list.length--
 	return val
 }
+
+/*
+1. Append -- DONE
+2. Prepend -- DONE
+3. insert at position -- DONE
+4. delete first -- DONE
+5. delete last -- DONE
+6. delete at position -- DONE
+7. from array -- DONE
+8. to array -- DONE
+9. Destroy -- DONE
+10. search
+11. delete by value with flag to support multiple
+12. sort
+13. reverse
+14. print
+*/
