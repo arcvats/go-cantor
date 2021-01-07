@@ -6,8 +6,8 @@ import (
 )
 
 func TestNewNode(t *testing.T) {
-	var num int = rand.Int()
-	var newNode *Node = NewNode(num)
+	num := rand.Int()
+	newNode := NewNode(num)
 	if newNode.value != num {
 		t.Errorf("Expected NewNode(%v) value to equal %v", num, newNode.value)
 	}
@@ -20,7 +20,7 @@ func TestNewNode(t *testing.T) {
 }
 
 func TestNewLinkedList(t *testing.T) {
-	var newList LinkedList = NewLinkedList()
+	newList := NewLinkedList()
 	if newList.head != nil {
 		t.Errorf("Expected NewLinkedList() head nil to equal %v", newList.head)
 	}

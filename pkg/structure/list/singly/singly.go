@@ -27,7 +27,7 @@ func NewLinkedList() LinkedList {
 
 //Append adds node at the end of linked list
 func (list *LinkedList) Append(value interface{}) {
-	var newNode *Node = NewNode(value)
+	newNode := NewNode(value)
 	if list.head == nil && list.tail == nil {
 		list.head = newNode
 		list.tail = newNode
@@ -40,7 +40,7 @@ func (list *LinkedList) Append(value interface{}) {
 
 //Prepend adds node at the beginning of the linked list
 func (list *LinkedList) Prepend(value interface{}) {
-	var newNode *Node = NewNode(value)
+	newNode := NewNode(value)
 	if list.head == nil && list.tail == nil {
 		list.head = newNode
 		list.tail = newNode
@@ -51,7 +51,7 @@ func (list *LinkedList) Prepend(value interface{}) {
 	list.length++
 }
 
-//InsertAtPosition node is inserted at given position
+//InsertAtPosition inserts a node at given position
 func (list *LinkedList) InsertAtPosition(position int, value interface{}) error {
 	if (position > list.length) || (position < 0) {
 		return errors.New("error: position is either greater than length or less than 0")
@@ -61,8 +61,8 @@ func (list *LinkedList) InsertAtPosition(position int, value interface{}) error 
 	} else if position == list.length {
 		list.Append(value)
 	} else {
-		var newNode *Node = NewNode(value)
-		var current *Node = list.head
+		newNode := NewNode(value)
+		current := list.head
 		for idx := 0; idx < position-1; idx++ {
 			current = current.next
 		}
@@ -73,7 +73,7 @@ func (list *LinkedList) InsertAtPosition(position int, value interface{}) error 
 	return nil
 }
 
-//DeleteFirst node of the linked list
+//DeleteFirst deletes first node of the linked list
 func (list *LinkedList) DeleteFirst() interface{} {
 	if list.length <= 0 {
 		return nil
@@ -81,13 +81,13 @@ func (list *LinkedList) DeleteFirst() interface{} {
 	if list.length == 1 {
 		list.tail = nil
 	}
-	var val interface{} = list.head.value
+	val := list.head.value
 	list.head = list.head.next
 	list.length--
 	return val
 }
 
-//DeleteLast node of the linked list
+//DeleteLast deletes last node of the linked list
 func (list *LinkedList) DeleteLast() interface{} {
 	if list.length <= 0 {
 		return nil
@@ -95,8 +95,8 @@ func (list *LinkedList) DeleteLast() interface{} {
 	if list.length == 1 {
 		return list.DeleteFirst()
 	}
-	var val interface{} = list.tail.value
-	var current *Node = list.head
+	val := list.tail.value
+	current := list.head
 	for current.next.next != nil {
 		current = current.next
 	}
@@ -106,7 +106,7 @@ func (list *LinkedList) DeleteLast() interface{} {
 	return val
 }
 
-//DeleteAtPosition a node at a position in the linked list
+//DeleteAtPosition deletes node at a position in the linked list
 func (list *LinkedList) DeleteAtPosition(position int) (interface{}, error) {
 	if (position > list.length) || (position < 0) {
 		return nil, errors.New("error: position is either greater than length or less than 0")
@@ -116,21 +116,21 @@ func (list *LinkedList) DeleteAtPosition(position int) (interface{}, error) {
 	} else if position == list.length {
 		return list.DeleteLast(), nil
 	} else {
-		var current *Node = list.head
+		current := list.head
 		for idx := 0; idx < position-1; idx++ {
 			current = current.next
 		}
-		var val interface{} = current.next.value
+		val := current.next.value
 		current.next = current.next.next
 		list.length--
 		return val, nil
 	}
 }
 
-//ToArray converts linked list to array
+//ToArray creates an array from the linked list
 func (list *LinkedList) ToArray() []interface{} {
 	var array []interface{}
-	var current *Node = list.head
+	current := list.head
 	for current != nil {
 		array = append(array, current.value)
 		current = current.next
@@ -138,7 +138,7 @@ func (list *LinkedList) ToArray() []interface{} {
 	return array
 }
 
-//FromArray creates a linked list from array
+//FromArray creates the linked list from an array
 func (list *LinkedList) FromArray(array []interface{}) {
 	for _, value := range array {
 		list.Append(value)
